@@ -72,7 +72,7 @@ async def text_to_speech(request: VoiceRequest, req: Request):
             
             return VoiceResponse(
                 status="success",
-                audio_url=audio_url,
+                audio_url=str(audio_url),
                 voice_used=request.voice,
                 style_used=request.style
             )

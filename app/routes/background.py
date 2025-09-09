@@ -46,7 +46,7 @@ async def remove_background(request: BackgroundRemovalRequest, req: Request):
             return BackgroundRemovalResponse(
                 status="success",
                 original_url=request.url,
-                processed_url=processed_url
+                processed_url=str(processed_url)
             )
             
     except httpx.HTTPStatusError as e:

@@ -19,11 +19,18 @@ load_dotenv()
 async def lifespan(app: FastAPI):
     # Startup
     Base.metadata.create_all(bind=engine)
-    await redis_client.ping()
+    try:
+        await redis_client.ping()
+        print("Redis connected successfully")
+    except Exception as e:
+        print(f"Redis connection failed: {e}, using in-memory fallback")
     setup_logging()
     yield
     # Shutdown
-    await redis_client.close()
+    try:
+        await redis_client.close()
+    except Exception:
+        pass
 
 app = FastAPI(
     title="DarkAI Pro Backend API",

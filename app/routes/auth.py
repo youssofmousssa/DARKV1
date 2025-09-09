@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends, status
-from fastapi.security import HTTPBearer
-from pydantic import BaseModel, EmailStr
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from pydantic import BaseModel
+from typing import Optional
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models.client import Client, AccessToken
@@ -15,12 +16,12 @@ SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-this")
 
 class ClientRegister(BaseModel):
     name: str
-    email: EmailStr
+    email: str
     scopes: list = []
     allowed_models: list = []
 
 class ClientLogin(BaseModel):
-    email: EmailStr
+    email: str
     api_key: str
 
 class TokenResponse(BaseModel):
@@ -95,14 +96,14 @@ async def login_client(login_data: ClientLogin, db: Session = Depends(get_db)):
         )
     
     # Verify API key
-    if not SecurityUtils.verify_password(login_data.api_key, client.hashed_api_key):
+    if not SecurityUtils.verify_password(login_data.api_key, str(client.hashed_api_key)):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid credentials"
         )
     
     # Check client status
-    if client.status != "active":
+    if str(client.status) != "active":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Client account is not active"
@@ -128,14 +129,14 @@ async def login_client(login_data: ClientLogin, db: Session = Depends(get_db)):
         token_type="bearer",
         expires_in=3600,
         client_id=str(client.id),
-        scopes=client.scopes
+        scopes=client.scopes if hasattr(client.scopes, '__iter__') else []
     )
 
 @router.get("/profile", summary="Get Client Profile")
-async def get_profile(token: str = Depends(security), db: Session = Depends(get_db)):
+async def get_profile(credentials: HTTPAuthorizationCredentials = Depends(security), db: Session = Depends(get_db)):
     """Get authenticated client profile"""
     try:
-        payload = SecurityUtils.verify_token(token.credentials, SECRET_KEY)
+        payload = SecurityUtils.verify_token(credentials.credentials, SECRET_KEY)
         client_id = payload.get("sub")
         
         client = db.query(Client).filter(Client.id == client_id).first()
@@ -149,8 +150,8 @@ async def get_profile(token: str = Depends(security), db: Session = Depends(get_
             "id": client.id,
             "name": client.name,
             "email": client.email,
-            "scopes": client.scopes,
-            "allowed_models": client.allowed_models,
+            "scopes": client.scopes or [],
+            "allowed_models": client.allowed_models or [],
             "rate_limit_profile": client.rate_limit_profile,
             "status": client.status,
             "created_at": client.created_at
