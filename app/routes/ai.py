@@ -188,100 +188,102 @@ async def gemini_flash(request: SimpleTextRequest, req: Request):
         raise HTTPException(status_code=500, detail="Internal server error")
 
 # Gemma Models - Separate endpoints
-@router.post("/gemma/4b", response_model=AIResponse, summary="Gemma 4B Model")
+@router.post("/gemma/4b", summary="Gemma 4B Model")
 async def gemma_4b(request: SimpleTextRequest, req: Request):
-    """Gemma 4B model"""
+    """
+    Gemma 4B model
+    
+    - **text**: Your prompt/question
+    - **api_key**: Your DarkAI API key (required)
+    """
+    await validate_api_key(request.api_key)
     base_url = "https://sii3.moayman.top/api/gemma.php"
     
     try:
-        start_time = time.time()
         async with httpx.AsyncClient(timeout=30.0) as client:
             response = await client.post(base_url, data={"4b": request.text})
             response.raise_for_status()
             
-            result = response.json() if response.headers.get("content-type", "").startswith("application/json") else {"response": response.text}
-            
-            return AIResponse(
-                status="success",
-                response=result.get("response", response.text),
-                model_used="gemma-4b",
-                processing_time=time.time() - start_time
-            )
+            if response.headers.get("content-type", "").startswith("application/json"):
+                return response.json()
+            else:
+                return {"response": response.text}
     except Exception as e:
         logger.error(f"Gemma 4B error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
-@router.post("/gemma/12b", response_model=AIResponse, summary="Gemma 12B Model")
+@router.post("/gemma/12b", summary="Gemma 12B Model")
 async def gemma_12b(request: SimpleTextRequest, req: Request):
-    """Gemma 12B model"""
+    """
+    Gemma 12B model
+    
+    - **text**: Your prompt/question
+    - **api_key**: Your DarkAI API key (required)
+    """
+    await validate_api_key(request.api_key)
     base_url = "https://sii3.moayman.top/api/gemma.php"
     
     try:
-        start_time = time.time()
         async with httpx.AsyncClient(timeout=30.0) as client:
             response = await client.post(base_url, data={"12b": request.text})
             response.raise_for_status()
             
-            result = response.json() if response.headers.get("content-type", "").startswith("application/json") else {"response": response.text}
-            
-            return AIResponse(
-                status="success",
-                response=result.get("response", response.text),
-                model_used="gemma-12b",
-                processing_time=time.time() - start_time
-            )
+            if response.headers.get("content-type", "").startswith("application/json"):
+                return response.json()
+            else:
+                return {"response": response.text}
     except Exception as e:
         logger.error(f"Gemma 12B error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
-@router.post("/gemma/27b", response_model=AIResponse, summary="Gemma 27B Model")
+@router.post("/gemma/27b", summary="Gemma 27B Model")
 async def gemma_27b(request: SimpleTextRequest, req: Request):
-    """Gemma 27B model"""
+    """
+    Gemma 27B model
+    
+    - **text**: Your prompt/question
+    - **api_key**: Your DarkAI API key (required)
+    """
+    await validate_api_key(request.api_key)
     base_url = "https://sii3.moayman.top/api/gemma.php"
     
     try:
-        start_time = time.time()
         async with httpx.AsyncClient(timeout=30.0) as client:
             response = await client.post(base_url, data={"27b": request.text})
             response.raise_for_status()
             
-            result = response.json() if response.headers.get("content-type", "").startswith("application/json") else {"response": response.text}
-            
-            return AIResponse(
-                status="success",
-                response=result.get("response", response.text),
-                model_used="gemma-27b",
-                processing_time=time.time() - start_time
-            )
+            if response.headers.get("content-type", "").startswith("application/json"):
+                return response.json()
+            else:
+                return {"response": response.text}
     except Exception as e:
         logger.error(f"Gemma 27B error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
 # WormGPT Model
-@router.post("/wormgpt", response_model=AIResponse, summary="WormGPT Model")
+@router.post("/wormgpt", summary="WormGPT Model")
 async def wormgpt(request: SimpleTextRequest, req: Request):
     """
     WormGPT AI model
     
+    - **text**: Your prompt/question
+    - **api_key**: Your DarkAI API key (required)
+    
     ⚠️ Disclaimer: This project is created for educational and research purposes only. 
     The user is solely responsible for how they choose to use it.
     """
+    await validate_api_key(request.api_key)
     base_url = "https://sii3.moayman.top/DARK/api/wormgpt.php"
     
     try:
-        start_time = time.time()
         async with httpx.AsyncClient(timeout=30.0) as client:
             response = await client.post(base_url, data={"text": request.text})
             response.raise_for_status()
             
-            result = response.json() if response.headers.get("content-type", "").startswith("application/json") else {"response": response.text}
-            
-            return AIResponse(
-                status="success",
-                response=result.get("response", response.text),
-                model_used="wormgpt",
-                processing_time=time.time() - start_time
-            )
+            if response.headers.get("content-type", "").startswith("application/json"):
+                return response.json()
+            else:
+                return {"response": response.text}
     except Exception as e:
         logger.error(f"WormGPT error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
