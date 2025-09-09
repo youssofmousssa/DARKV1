@@ -157,18 +157,20 @@ async def gpt_image_edit(request: ImageEditRequest, req: Request):
     Edit images using GPT-5
     
     - **text**: Editing instructions/prompt
-    - **link**: Image URL to edit
+    - **link**: Image URL to edit (optional - if not provided, generates new image)
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
     base_url = "https://sii3.moayman.top/api/gpt-img.php"
     
     try:
+        # Prepare data for the API call
+        data = {"text": request.text}
+        if request.link:
+            data["link"] = request.link
+            
         async with httpx.AsyncClient(timeout=60.0) as client:
-            response = await client.post(base_url, data={
-                "text": request.text,
-                "link": request.link
-            })
+            response = await client.post(base_url, data=data)
             response.raise_for_status()
             
             if response.headers.get("content-type", "").startswith("application/json"):
@@ -187,8 +189,8 @@ async def gpt_image_edit(request: ImageEditRequest, req: Request):
                 )
             
     except Exception as e:
-        logger.error(f"GPT image edit API error: {e}")
-        raise HTTPException(status_code=500, detail="Failed to edit image")
+        logger.error(f"GPT image API error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to process image")
 
 # Flux Pro - Generate 4 Images
 @router.post("/flux-pro", summary="Flux Pro - Generate 4 Images")
