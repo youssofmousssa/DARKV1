@@ -13,7 +13,7 @@ class SimpleImageRequest(BaseModel):
 
 class ImageEditRequest(BaseModel):
     text: str
-    link: str
+    link: Optional[str] = None
     api_key: str
 
 class MultiImageRequest(BaseModel):
@@ -32,6 +32,9 @@ async def validate_api_key(api_key: str) -> bool:
         raise HTTPException(status_code=400, detail="API key is required")
     # You can add actual API key validation here if needed
     return True
+
+# Gemini Image Generation (REMOVED - Only editing endpoint available)
+# The external API only supports editing mode with text and optional link parameters
 
 # Gemini Image Generation
 @router.post("/gemini-img", response_model=ImageResponse, summary="Gemini Pro Image Generation")
@@ -58,7 +61,6 @@ async def gemini_image_generate(request: SimpleImageRequest, req: Request):
                     dev=result.get("dev", "Don't forget to support the channel @DarkAIx")
                 )
             else:
-                # If API returns direct URL
                 url = response.text.strip()
                 return ImageResponse(
                     date=time.strftime("%d/%m/%Y"),
@@ -77,18 +79,20 @@ async def gemini_image_edit(request: ImageEditRequest, req: Request):
     Edit images using Gemini Pro
     
     - **text**: Editing instructions/prompt
-    - **link**: Image URL to edit
+    - **link**: Image URL to edit (optional - if not provided, generates new image)
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
     base_url = "https://sii3.moayman.top/api/gemini-img.php"
     
     try:
+        # Prepare data for the API call
+        data = {"text": request.text}
+        if request.link:
+            data["link"] = request.link
+            
         async with httpx.AsyncClient(timeout=60.0) as client:
-            response = await client.post(base_url, data={
-                "text": request.text,
-                "link": request.link
-            })
+            response = await client.post(base_url, data=data)
             response.raise_for_status()
             
             if response.headers.get("content-type", "").startswith("application/json"):
@@ -107,8 +111,8 @@ async def gemini_image_edit(request: ImageEditRequest, req: Request):
                 )
             
     except Exception as e:
-        logger.error(f"Gemini image edit API error: {e}")
-        raise HTTPException(status_code=500, detail="Failed to edit image")
+        logger.error(f"Gemini image API error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to process image")
 
 # GPT-5 Image Generation
 @router.post("/gpt-img", response_model=ImageResponse, summary="GPT-5 Image Generation")
