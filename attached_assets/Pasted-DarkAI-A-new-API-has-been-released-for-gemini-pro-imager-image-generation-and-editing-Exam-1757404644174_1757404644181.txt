@@ -1,0 +1,193 @@
+DarkAI:
+A new API has been released for gemini-pro-imager image generation and editing 🌸💭
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/gemini-img.php?text=Make+the+icon+red&link=https://sii3.moayman.top/DarkAI.jpg
+
+🔴 Example via POST:
+curl -X POST "https://sii3.moayman.top/api/gemini-img.php" \
+     -d "text=change the icon color to green" \
+     -d "link=https://sii3.moayman.top/DarkAI.jpg"
+
+⚪ Usage:
+
+send prompt "?text="
+add link  file "&link="
+?text=prompt&link=https://domain..../name.png
+
+the API will return a JSON response with the generated image URL:
+
+{
+  "date": "24/08/2025",
+  "url": "https://sii3.moayman.top/api/gemini-img/darkai****.png",
+  "dev": "Don't forget to support the channel @DarkAIx"
+}
+
+
+🍸 The API is very very fast
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+A new API has been released for gpt-5 image generation and editing 💫
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/gpt-img.php?text=Make+the+icon+gold&link=https://sii3.moayman.top/DarkAI.jpg
+
+🔴 Example via POST:
+curl -X POST "https://sii3.moayman.top/api/gpt-img.php" \
+     -d "text=change the icon color to gold" \
+     -d "link=https://sii3.moayman.top/DarkAI.jpg
+"
+
+⚪ Usage:
+send prompt "?text="
+add link  file "&link="
+?text=prompt&link=https://domain..../name.png
+
+
+the API will return a JSON response with the generated image URL:
+
+{
+  "date": "24/08/2025",
+  "url": "https://sii3.moayman.top/api/gpt-img/darkai****.png",
+  "dev": "Don't forget to support the channel @DarkA
+Ix"
+}
+
+
+💡 Proxy issues etc solved no error will appear
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+A New API Song Creation With Lyrics And Music 💡
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/music.php?lyrics=love+is+pain&tags=sad+piano+hop+pop
+
+🔴 Example via POST:
+curl -X POST "https://sii3.moayman.top/api/music.php" \
+     -d "lyrics=DarkAI, future in my mind
+Breaking all the chains, leaving fear behind
+AI in the sky, shining like a star
+Guiding every dream, taking us so far" \
+     -d "tags=sad+piano+hop+pop"
+
+🔴 Example of some tags:
+epic,
+orchestra,
+cinematic,
+emotional,
+piano,
+sad,
+dramatic,
+hope,
+electronic,
+ambient,
+dark,
+powerful,
+pop,
+hiphop,
+future,
+bass,
+trap,
+lofi,
+rock,
+guitar,
+melancholy,
+uplifting,
+chill,
+deep,
+house,
+edm,
+techno,
+synthwave,
+retro,
+classical,
+violin,
+instrumental,
+acoustic,
+melodic,
+harmonic,
+dreamy,
+romantic,
+intense,
+soft,
+hardstyle,
+progressive,
+vocal,
+beats,
+rap,
+freestyle,
+club,
+party,
+funk,
+groove,
+metal,
+jazz,
+blues,
+soul,
+indie,
+alternative,
+folk,
+ballad,
+anthemic,
+minimal,
+industrial,
+world,
+afrobeat,
+latin,
+reggaeton,
+dancehall,
+oriental,
+arabic,
+ethnic,
+tribal,
+drums,
+percussion,
+strings,
+choir,
+opera,
+symphonic,
+modern,
+experimental,
+psytrance,
+chillwave,
+downtempo,
+relaxing,
+meditation,
+zen,
+trance,
+hardcore,
+dnb,
+breakbeat,
+glitch,
+future_garage,
+electro,
+urban,
+dreamwave,
+
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+New API for creating 15s music without lyrics 💜
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/create-music.php?text=love
+
+🔴 Example via POST
+curl -X POST "https://sii3.moayman.top/api/music.php" \
+     -d "text=love"
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
