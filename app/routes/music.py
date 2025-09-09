@@ -81,7 +81,7 @@ async def create_instrumental_music(request: SimpleTextRequest, req: Request):
     base_url = "https://sii3.moayman.top/api/create-music.php"
     
     try:
-        async with httpx.AsyncClient(timeout=60.0) as client:
+        async with httpx.AsyncClient(timeout=120.0) as client:
             response = await client.post(base_url, data={"text": request.text})
             response.raise_for_status()
             
@@ -91,6 +91,8 @@ async def create_instrumental_music(request: SimpleTextRequest, req: Request):
             else:
                 return {"audio_url": response.text.strip()}
             
+    except httpx.TimeoutException:
+        raise HTTPException(status_code=408, detail="Music generation timeout")
     except Exception as e:
         logger.error(f"Instrumental music API error: {e}")
         raise HTTPException(status_code=500, detail="Failed to create instrumental music")
