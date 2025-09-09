@@ -188,19 +188,25 @@ async def nano_banana_merge(request: MultiImageRequest, req: Request):
     - links: comma-separated image URLs (max 10)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/nano-banana.php"
 
-    # basic sanity check on number of links
+    # Sanitize and split the input string
     links_list = [l.strip() for l in request.links.split(",") if l.strip()]
+    
     if not links_list:
         raise HTTPException(status_code=400, detail="At least one link is required")
     if len(links_list) > 10:
         raise HTTPException(status_code=400, detail="A maximum of 10 images is supported")
 
+    base_url = "https://sii3.moayman.top/api/nano-banana.php"
+
     try:
         async with httpx.AsyncClient(timeout=120.0) as client:
-            data = {"text": request.text, "links": ",".join(links_list)}
+            data = {
+                "text": request.text,
+                "links": ",".join(links_list)  # Send as comma-separated string
+            }
             return await _post_and_parse(client, base_url, data, timeout=120.0)
+
     except httpx.TimeoutException as te:
         logger.error(f"Nano Banana timeout: {te}")
         raise HTTPException(status_code=504, detail="Nano Banana API timed out")
