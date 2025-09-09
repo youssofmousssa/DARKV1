@@ -1,0 +1,438 @@
+DarkAI:
+A new API has been released for gemini-pro-imager image generation and editing 🌸💭
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/gemini-img.php?text=Make+the+icon+red&link=https://sii3.moayman.top/DarkAI.jpg
+
+🔴 Example via POST:
+curl -X POST "https://sii3.moayman.top/api/gemini-img.php" \
+     -d "text=change the icon color to green" \
+     -d "link=https://sii3.moayman.top/DarkAI.jpg"
+
+⚪ Usage:
+
+send prompt "?text="
+add link  file "&link="
+?text=prompt&link=https://domain..../name.png
+
+the API will return a JSON response with the generated image URL:
+
+{
+  "date": "24/08/2025",
+  "url": "https://sii3.moayman.top/api/gemini-img/darkai****.png",
+  "dev": "Don't forget to support the channel @DarkAIx"
+}
+
+
+🍸 The API is very very fast
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+🚬 A new API has been released for text to speech voice generation 🔪
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/voice.php?text=Hello+DarkAI&voice=nova&style=cheerful+tone
+
+https://sii3.moayman.top/api/voice.php?text=Hello+DarkAI&voice=nova
+
+https://sii3.moayman.top/api/voice.php?text=Hello+DarkAI&style=cheerful+tone
+
+https://sii3.moayman.top/api/voice.php?text=Hello+DarkAI
+
+🔴 Example via POST:
+curl -X POST "https://sii3.moayman.top/api/voice.php" \
+  -d "text=Hello DarkAI" \
+  -d "voice=aria" \
+  -d "style=soft whisper"
+
+choose from multiple voices: 
+nova, alloy, verse, flow, aria, lumen
+
+Apply custom speaking styles or use ready examples
+
+
+📍 default settings will be used if you only provide text
+📍 you can set voice, style, or both
+
+💡 Try it now:
+https://sii3.moayman.top/api/voice.php
+
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+📊 New API to generate 4 images per request from flux-pro model More powerful model 🔥💡
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/flux-pro.php?text=cat+with+sunglasses
+
+🔴 Example via POST:
+curl -s -X POST "https://sii3.moayman.top/api/flux-pro.php" \
+-d "text=Create a cat image" \
+| jq .
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+🌐 New unified API released: text-to-video & image-to-video with FREE audio support! 🎬🎵
+
+Now you can generate videos from text or images using a single endpoint:
+
+😀 Image-to-Video
+
+🔴 GET Example:
+https://sii3.moayman.top/api/veo3.php?text=Convert_image_to_video&link=https://sii3.moayman.top/DarkAI.jpg
+🔴 POST Example:
+curl -X POST "https://sii3.moayman.top/api/veo3.php" \
+     -d "text=Turn this logo into a short cinematic video" \
+     -d "link=https://sii3.moayman.top/DarkAI.jpg"
+
+2️⃣ Text-to-Video
+
+🔴 GET Example:
+https://sii3.moayman.top/api/veo3.php?text=Create+a+cinematic+intro+with+DarkAI
+
+🔴 POST Example:
+curl -X POST "https://sii3.moayman.top/api/veo3.php" \
+     -d "text=Create a cinematic 3D animation of DarkAI with glowing effects"
+
+Audio support: 👀 Now fully supported for free
+🎤 no need to purchase voice API from developer!
+
+Firsthand experience: https://sii3.moayman.top
+
+⚪Owner: @sii_3
+⚪Support: @zDarkAI
+⚪Channel: @DarkAIx
+⚪Boost: T.me/boost/DarkAIx
+
+A new API has been released for gpt-5 image generation and editing 💫
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/gpt-img.php?text=Make+the+icon+gold&link=https://sii3.moayman.top/DarkAI.jpg
+
+🔴 Example via POST:
+curl -X POST "https://sii3.moayman.top/api/gpt-img.php" \
+     -d "text=change the icon color to gold" \
+     -d "link=https://sii3.moayman.top/DarkAI.jpg
+"
+
+⚪ Usage:
+send prompt "?text="
+add link  file "&link="
+?text=prompt&link=https://domain..../name.png
+
+
+the API will return a JSON response with the generated image URL:
+
+{
+  "date": "24/08/2025",
+  "url": "https://sii3.moayman.top/api/gpt-img/darkai****.png",
+  "dev": "Don't forget to support the channel @DarkA
+Ix"
+}
+
+
+💡 Proxy issues etc solved no error will appear
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+A New API Song Creation With Lyrics And Music 💡
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/music.php?lyrics=love+is+pain&tags=sad+piano+hop+pop
+
+🔴 Example via POST:
+curl -X POST "https://sii3.moayman.top/api/music.php" \
+     -d "lyrics=DarkAI, future in my mind
+Breaking all the chains, leaving fear behind
+AI in the sky, shining like a star
+Guiding every dream, taking us so far" \
+     -d "tags=sad+piano+hop+pop"
+
+🔴 Example of some tags:
+epic,
+orchestra,
+cinematic,
+emotional,
+piano,
+sad,
+dramatic,
+hope,
+electronic,
+ambient,
+dark,
+powerful,
+pop,
+hiphop,
+future,
+bass,
+trap,
+lofi,
+rock,
+guitar,
+melancholy,
+uplifting,
+chill,
+deep,
+house,
+edm,
+techno,
+synthwave,
+retro,
+classical,
+violin,
+instrumental,
+acoustic,
+melodic,
+harmonic,
+dreamy,
+romantic,
+intense,
+soft,
+hardstyle,
+progressive,
+vocal,
+beats,
+rap,
+freestyle,
+club,
+party,
+funk,
+groove,
+metal,
+jazz,
+blues,
+soul,
+indie,
+alternative,
+folk,
+ballad,
+anthemic,
+minimal,
+industrial,
+world,
+afrobeat,
+latin,
+reggaeton,
+dancehall,
+oriental,
+arabic,
+ethnic,
+tribal,
+drums,
+percussion,
+strings,
+choir,
+opera,
+symphonic,
+modern,
+experimental,
+psytrance,
+chillwave,
+downtempo,
+relaxing,
+meditation,
+zen,
+trance,
+hardcore,
+dnb,
+breakbeat,
+glitch,
+future_garage,
+electro,
+urban,
+dreamwave,
+
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+Universal Social Downloader API 🔪
+
+Easily download content from all social media platforms using a single API call Simply provide the URL via GET and get the video audio or image links instantly No need for multiple tools or accounts
+🔴 Example GET:
+https://sii3.moayman.top/api/do.php?url=YOUR_SOCIAL_URL
+
+The API returns a JSON object with the title of the content links with type and quality and current
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+A new API has been released for nano-banana image generation and editing 😎🎞
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/nano-banana.php?text=Merge+the+photos&links=link1,link2,link..."
+🔴 Example via POST:
+curl -X POST "https://sii3.moayman.top/api/nano-banana.php" \
+     -d "text=Merge the photos naturally" \
+     -d "links=link1,link2,link..."
+
+add links of images (max 10)
+
+😎 The API is very fast and supports From 1 to 10 images in one request
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+A new service for generating images with very very high quality and details at an incredible speed it generates an image within seconds with high quality and details 🦇❤️
+
+
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/img-cv.php?text=cat+with+sunglasses
+
+🔴 Example via POST:
+curl -X POST "https://sii3.moayman.top/api/img-cv.php" \
+     -d "text=cat with sunglasses"
+
+🔴 Response Json:
+{
+  "date": "01/09/2025",
+  "url": "https://sii3.moayman.top/api/img-cv1/darkai***.png",
+  "dev": "Don't forget to support the channel @DarkAIx"
+}
+
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+New API for creating 15s music without lyrics 💜
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/create-music.php?text=love
+
+🔴 Example via POST
+curl -X POST "https://sii3.moayman.top/api/music.php" \
+     -d "text=love"
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+🌟 New API for connecting to multi-model AI
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/ai.php?online=hello
+
+🔴 Example via POST:
+curl -X POST -d "online=hello" https://sii3.moayman.top/api/ai.php
+
+🔴 Parameters (choose one):
+?online= 
+?standard= 
+?super-genius=
+?online-genius=
+
+⚪️ owner: @sii_3
+⚪️ support: @zDarkAI
+⚪️ channel: @DarkAIx
+⚪️ boost: T.me/boost/DarkAIx
+
+New api to remove background from image 🌟
+
+🔴 API Here:
+https://sii3.moayman.top/api/remove-bg.php?url=
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/remove-bg.php?url=https://sii3.moayman.top/DarkAI.jpg
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+New API to use all Gemini models 🎄
+
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/gemini-dark.php?gemini-pro=hello
+
+🔴 Example via POST :
+curl -X POST "https://sii3.moayman.top/api/gemini-dark.php" \
+     -H "Content-Type: application/json" \
+     -d '{"gemini-pro":"hello"}'
+🎤 gemini-2.5-pro
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/gemini-dark.php?gemini-deep=hello
+
+🔴 Example via POST :
+curl -X POST "https://sii3.moayman.top/api/gemini-dark.php" \
+     -H "Content-Type: application/json" \
+     -d '{"gemini-deep":"hello"}'
+🎤 gemini-2.5-deep-search
+
+🔴 Example via GET :
+http://sii3.moayman.top/DARK/gemini.php?text=hello
+
+🔴 Example via POST :
+curl -X POST https://sii3.moayman.top/DARK/gemini.php \
+-H "Content-Type: application/json" \
+-d '{"text":"hello"}'
+🎤 gemini-2.5-flash
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+New API for gemma models 😎
+
+🔴 Example via GET:
+https://sii3.moayman.top/api/gemma.php?27b=hello
+
+🔴 Example via POST:
+curl -X POST "https://sii3.moayman.top/api/gemma.php" \
+-d "27b=hello"
+
+You can specify the model via the parameter ?»»= 🌟
+
+🔴 models:
+4b=hello
+12b=hello
+27b=hello
+
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
+
+Repair API  WormGPT 🐍
+
+🔴 Example via GET :
+http://sii3.moayman.top/DARK/api/wormgpt.php?text=hello
+
+🔴 Example via POST : 
+curl -X POST https://sii3.moayman.top/DARK/api/wormgpt.php -d "text=hello"
+﻿
+⚪website: Click here
+
+All the problems have been fixed and the slowness problems have been fixed it has become very fast dear ✔️
+⚠️ Disclaimer:
+This project is created for educational and research purposes only i am not responsible for any misuse or illegal activities carried out using this tool The user is solely responsible for how they choose to use it ‼️
+
+⚪ owner: @sii_3
+⚪ support: @zDarkAI
+⚪ channel: @DarkAIx
+⚪ boost: T.me/boost/DarkAIx
