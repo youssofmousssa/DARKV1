@@ -8,18 +8,21 @@ router = APIRouter()
 
 class SocialDownloadRequest(BaseModel):
     url: str
+    api_key: str
 
-class SocialDownloadResponse(BaseModel):
-    status: str
-    title: str
-    downloads: List[Dict[str, Any]]
+# Helper function to validate API key
+async def validate_api_key(api_key: str) -> bool:
+    if not api_key:
+        raise HTTPException(status_code=400, detail="API key is required")
+    return True
 
-@router.post("/social-downloader", response_model=SocialDownloadResponse, summary="Universal Social Media Downloader")
+@router.post("/social-downloader", summary="Universal Social Media Downloader")
 async def download_social_content(request: SocialDownloadRequest, req: Request):
     """
     Download content from all social media platforms using a single API call
     
     - **url**: Social media URL to download content from
+    - **api_key**: Your DarkAI API key (required)
     
     Supported platforms:
     - YouTube
@@ -32,6 +35,8 @@ async def download_social_content(request: SocialDownloadRequest, req: Request):
     Simply provide the URL and get video/audio/image links instantly with quality and type information.
     No need for multiple tools or accounts.
     """
+    await validate_api_key(request.api_key)
+    
     if not request.url.startswith(("http://", "https://")):
         raise HTTPException(status_code=400, detail="Invalid URL format - must start with http:// or https://")
     
@@ -42,25 +47,11 @@ async def download_social_content(request: SocialDownloadRequest, req: Request):
             response = await client.get(base_url, params={"url": request.url})
             response.raise_for_status()
             
-            result = response.json()
-            
-            # Parse the response structure
-            downloads = []
-            if isinstance(result, dict):
-                if "downloads" in result:
-                    downloads = result["downloads"]
-                elif "url" in result:
-                    downloads = [{"url": result["url"], "type": "video", "quality": "default"}]
-                elif "links" in result:
-                    downloads = result["links"]
-            
-            title = result.get("title", "Downloaded Content")
-            
-            return SocialDownloadResponse(
-                status="success",
-                title=title,
-                downloads=downloads
-            )
+            # Return the raw response from DarkAI API
+            if response.headers.get("content-type", "").startswith("application/json"):
+                return response.json()
+            else:
+                return {"response": response.text}
             
     except httpx.HTTPStatusError as e:
         if e.response.status_code == 404:

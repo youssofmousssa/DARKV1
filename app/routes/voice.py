@@ -8,27 +8,31 @@ router = APIRouter()
 
 class SimpleVoiceRequest(BaseModel):
     text: str
+    api_key: str
 
 class VoiceWithStyleRequest(BaseModel):
     text: str
     voice: Optional[str] = None
     style: Optional[str] = None
+    api_key: str
 
-class VoiceResponse(BaseModel):
-    status: str
-    audio_url: str
-    voice_used: str
-    style_used: Optional[str] = None
+# Helper function to validate API key
+async def validate_api_key(api_key: str) -> bool:
+    if not api_key:
+        raise HTTPException(status_code=400, detail="API key is required")
+    return True
 
-@router.post("/voice", response_model=VoiceResponse, summary="Text to Speech - Default Settings")
+@router.post("/voice", summary="Text to Speech - Default Settings")
 async def voice_default(request: SimpleVoiceRequest, req: Request):
     """
     Convert text to speech with default voice settings
     
     - **text**: Text to convert to speech
+    - **api_key**: Your DarkAI API key (required)
     
     Uses default voice and style settings for quick conversion
     """
+    await validate_api_key(request.api_key)
     base_url = "https://sii3.moayman.top/api/voice.php"
     
     try:
@@ -36,28 +40,17 @@ async def voice_default(request: SimpleVoiceRequest, req: Request):
             response = await client.post(base_url, data={"text": request.text})
             response.raise_for_status()
             
-            # Handle different response formats
+            # Return the raw response from DarkAI API
             if response.headers.get("content-type", "").startswith("application/json"):
-                result = response.json()
-                audio_url = result.get("url", result.get("audio_url", ""))
+                return response.json()
             else:
-                audio_url = response.url if response.status_code == 200 else ""
-            
-            if not audio_url and response.text.startswith("http"):
-                audio_url = response.text.strip()
-            
-            return VoiceResponse(
-                status="success",
-                audio_url=str(audio_url),
-                voice_used="default",
-                style_used=None
-            )
+                return {"audio_url": response.text.strip()}
             
     except Exception as e:
         logger.error(f"Voice API error: {e}")
         raise HTTPException(status_code=500, detail="Failed to generate voice")
 
-@router.post("/voice/custom", response_model=VoiceResponse, summary="Text to Speech - Custom Voice & Style")
+@router.post("/voice/custom", summary="Text to Speech - Custom Voice & Style")
 async def voice_custom(request: VoiceWithStyleRequest, req: Request):
     """
     Convert text to speech with custom voice and style options
@@ -76,7 +69,9 @@ async def voice_custom(request: VoiceWithStyleRequest, req: Request):
     - Custom styles supported
     
     You can set voice, style, or both
+    - **api_key**: Your DarkAI API key (required)
     """
+    await validate_api_key(request.api_key)
     base_url = "https://sii3.moayman.top/api/voice.php"
     
     # Validate voice options if provided
@@ -100,22 +95,11 @@ async def voice_custom(request: VoiceWithStyleRequest, req: Request):
             response = await client.post(base_url, data=params)
             response.raise_for_status()
             
-            # Handle different response formats
+            # Return the raw response from DarkAI API
             if response.headers.get("content-type", "").startswith("application/json"):
-                result = response.json()
-                audio_url = result.get("url", result.get("audio_url", ""))
+                return response.json()
             else:
-                audio_url = response.url if response.status_code == 200 else ""
-            
-            if not audio_url and response.text.startswith("http"):
-                audio_url = response.text.strip()
-            
-            return VoiceResponse(
-                status="success",
-                audio_url=str(audio_url),
-                voice_used=request.voice or "default",
-                style_used=request.style
-            )
+                return {"audio_url": response.text.strip()}
             
     except httpx.TimeoutException:
         raise HTTPException(status_code=408, detail="Voice generation timeout")
