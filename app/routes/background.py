@@ -13,17 +13,21 @@ class BackgroundRemovalResponse(BaseModel):
     original_url: str
     processed_url: str
 
-@router.post("/remove-bg", response_model=BackgroundRemovalResponse, summary="Background Removal")
+@router.post("/remove-bg", response_model=BackgroundRemovalResponse, summary="Remove Background from Image")
 async def remove_background(request: BackgroundRemovalRequest, req: Request):
     """
-    Remove background from images
+    Remove background from images automatically
     
     - **url**: Image URL to process
     
-    Returns the processed image with transparent background
+    Features:
+    - Automatic background detection and removal
+    - Returns processed image with transparent background
+    - Supports common image formats (JPG, PNG, etc.)
+    - Fast processing
     """
     if not request.url.startswith(("http://", "https://")):
-        raise HTTPException(status_code=400, detail="Invalid image URL format")
+        raise HTTPException(status_code=400, detail="Invalid image URL format - must start with http:// or https://")
     
     base_url = "https://sii3.moayman.top/api/remove-bg.php"
     

@@ -14,25 +14,26 @@ class SocialDownloadResponse(BaseModel):
     title: str
     downloads: List[Dict[str, Any]]
 
-@router.post("/download", response_model=SocialDownloadResponse, summary="Universal Social Media Downloader")
+@router.post("/social-downloader", response_model=SocialDownloadResponse, summary="Universal Social Media Downloader")
 async def download_social_content(request: SocialDownloadRequest, req: Request):
     """
-    Download content from all social media platforms
+    Download content from all social media platforms using a single API call
     
-    - **url**: Social media URL (YouTube, TikTok, Instagram, Facebook, Twitter, etc.)
+    - **url**: Social media URL to download content from
     
     Supported platforms:
     - YouTube
-    - TikTok
+    - TikTok  
     - Instagram
     - Facebook
     - Twitter/X
-    - And many more...
+    - And many more social platforms...
     
-    Returns video/audio/image links with quality information
+    Simply provide the URL and get video/audio/image links instantly with quality and type information.
+    No need for multiple tools or accounts.
     """
     if not request.url.startswith(("http://", "https://")):
-        raise HTTPException(status_code=400, detail="Invalid URL format")
+        raise HTTPException(status_code=400, detail="Invalid URL format - must start with http:// or https://")
     
     base_url = "https://sii3.moayman.top/api/do.php"
     

@@ -1,29 +1,31 @@
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 import httpx
-from typing import Optional, List
+from typing import Optional
 from app.utils.logging import logger
 
 router = APIRouter()
 
-class MusicRequest(BaseModel):
-    lyrics: Optional[str] = None  # For music with lyrics
-    tags: Optional[str] = None   # Music style tags
-    text: Optional[str] = None   # For instrumental music
+class MusicWithLyricsRequest(BaseModel):
+    lyrics: str
+    tags: Optional[str] = None
+
+class SimpleTextRequest(BaseModel):
+    text: str
 
 class MusicResponse(BaseModel):
     status: str
     audio_url: str
-    music_type: str  # "with_lyrics" or "instrumental"
+    music_type: str
     tags_used: Optional[str] = None
 
 @router.post("/music", response_model=MusicResponse, summary="Music Creation with Lyrics")
-async def create_music_with_lyrics(request: MusicRequest, req: Request):
+async def create_music_with_lyrics(request: MusicWithLyricsRequest, req: Request):
     """
     Create music with lyrics and custom style tags
     
     - **lyrics**: Song lyrics text
-    - **tags**: Music style tags (e.g., "sad piano hop pop")
+    - **tags**: Music style tags (optional, e.g., "sad piano hop pop")
     
     Available tags include:
     epic, orchestra, cinematic, emotional, piano, sad, dramatic, hope, electronic,
@@ -38,9 +40,6 @@ async def create_music_with_lyrics(request: MusicRequest, req: Request):
     downtempo, relaxing, meditation, zen, trance, hardcore, dnb, breakbeat,
     glitch, future_garage, electro, urban, dreamwave
     """
-    if not request.lyrics:
-        raise HTTPException(status_code=400, detail="Lyrics are required for music creation")
-    
     base_url = "https://sii3.moayman.top/api/music.php"
     
     try:
@@ -71,16 +70,15 @@ async def create_music_with_lyrics(request: MusicRequest, req: Request):
         logger.error(f"Music API error: {e}")
         raise HTTPException(status_code=500, detail="Failed to create music")
 
-@router.post("/create-music", response_model=MusicResponse, summary="Instrumental Music Creation")
-async def create_instrumental_music(request: MusicRequest, req: Request):
+@router.post("/create-music", response_model=MusicResponse, summary="Create 15s Instrumental Music")
+async def create_instrumental_music(request: SimpleTextRequest, req: Request):
     """
     Create 15-second instrumental music without lyrics
     
-    - **text**: Music description/style
-    """
-    if not request.text:
-        raise HTTPException(status_code=400, detail="Text description is required")
+    - **text**: Music description/style (e.g., "love", "dramatic", "upbeat")
     
+    Creates short instrumental music clips perfect for background music
+    """
     base_url = "https://sii3.moayman.top/api/create-music.php"
     
     try:
