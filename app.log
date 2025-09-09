@@ -1,0 +1,74 @@
+2025-09-09 06:43:07,932 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-09-09 06:44:44,025 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/ai.php "HTTP/1.1 200 OK"
+2025-09-09 06:45:58,478 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/voice.php "HTTP/1.1 200 OK"
+2025-09-09 06:57:45,045 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-09-09 06:59:32,610 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/voice.php "HTTP/1.1 200 OK"
+2025-09-09 07:00:51,491 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/DARK/api/wormgpt.php "HTTP/1.1 200 OK"
+2025-09-09 07:01:11,545 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/DARK/api/wormgpt.php "HTTP/1.1 200 OK"
+2025-09-09 07:01:54,542 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemma.php "HTTP/1.1 200 OK"
+2025-09-09 07:02:20,575 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemma.php "HTTP/1.1 200 OK"
+2025-09-09 07:02:35,793 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/DARK/gemini.php "HTTP/1.1 200 OK"
+2025-09-09 07:02:54,640 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-dark.php "HTTP/1.1 200 OK"
+2025-09-09 07:03:10,244 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-dark.php "HTTP/1.1 200 OK"
+2025-09-09 07:03:28,366 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/ai.php "HTTP/1.1 200 OK"
+2025-09-09 07:03:48,033 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/ai.php "HTTP/1.1 200 OK"
+2025-09-09 07:04:07,613 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/ai.php "HTTP/1.1 200 OK"
+2025-09-09 07:04:30,742 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/ai.php "HTTP/1.1 200 OK"
+2025-09-09 07:04:54,808 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-img.php "HTTP/1.1 200 OK"
+2025-09-09 07:06:16,289 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gpt-img.php "HTTP/1.1 200 OK"
+2025-09-09 07:07:39,522 - httpx - INFO - HTTP Request: GET https://sii3.moayman.top/api/do.php?url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F1CMbZhmEkV%2F "HTTP/1.1 200 OK"
+2025-09-09 07:08:13,009 - httpx - INFO - HTTP Request: GET https://sii3.moayman.top/api/remove-bg.php?url=https%3A%2F%2Fcdn.snapzion.com%2Fworkspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887%2Fimage%2F5199f7d4-8591-4bab-97c9-137e5a91f38f.png "HTTP/1.1 200 OK"
+2025-09-09 07:13:12,174 - darkai_api - ERROR - Instrumental music API error: 
+2025-09-09 07:27:11,723 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/ai.php "HTTP/1.1 200 OK"
+2025-09-09 07:28:20,703 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/flux-pro.php "HTTP/1.1 200 OK"
+2025-09-09 07:29:21,593 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gpt-img.php "HTTP/1.1 200 OK"
+2025-09-09 07:31:11,052 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gpt-img.php "HTTP/1.1 200 OK"
+2025-09-09 07:32:02,373 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-img.php "HTTP/1.1 200 OK"
+2025-09-09 07:32:48,011 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-img.php "HTTP/1.1 200 OK"
+2025-09-09 07:33:23,470 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/img-cv.php "HTTP/1.1 200 OK"
+2025-09-09 07:35:40,685 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/voice.php "HTTP/1.1 200 OK"
+2025-09-09 07:36:43,993 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/voice.php "HTTP/1.1 200 OK"
+2025-09-09 07:38:10,703 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/veo3.php "HTTP/1.1 200 OK"
+2025-09-09 07:43:18,238 - darkai_api - ERROR - Instrumental music API error: 
+2025-09-09 07:46:01,889 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/ai.php "HTTP/1.1 200 OK"
+2025-09-09 07:47:48,534 - httpx - INFO - HTTP Request: GET https://sii3.moayman.top/api/do.php?url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F19SmaRobdf%2F "HTTP/1.1 200 OK"
+2025-09-09 07:48:26,820 - httpx - INFO - HTTP Request: GET https://sii3.moayman.top/api/remove-bg.php?url=https%3A%2F%2Fcdn.snapzion.com%2Fworkspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887%2Fimage%2F0174960e-472e-450a-abb4-949733344656.png "HTTP/1.1 200 OK"
+2025-09-09 07:54:04,777 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-img.php "HTTP/1.1 200 OK"
+2025-09-09 08:05:21,623 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-img.php "HTTP/1.1 200 OK"
+2025-09-09 08:06:10,477 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gpt-img.php "HTTP/1.1 200 OK"
+2025-09-09 08:33:35,176 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-img.php "HTTP/1.1 200 OK"
+2025-09-09 08:40:16,731 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gpt-img.php "HTTP/1.1 200 OK"
+2025-09-09 09:52:33,052 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-img.php "HTTP/1.1 200 OK"
+2025-09-09 09:54:12,041 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gpt-img.php "HTTP/1.1 200 OK"
+2025-09-09 09:54:57,527 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gpt-img.php "HTTP/1.1 200 OK"
+2025-09-09 10:01:09,280 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gpt-img.php "HTTP/1.1 200 OK"
+2025-09-09 10:02:12,756 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gpt-img.php "HTTP/1.1 200 OK"
+2025-09-09 10:03:07,957 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gpt-img.php "HTTP/1.1 200 OK"
+2025-09-09 10:03:11,661 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-img.php "HTTP/1.1 200 OK"
+2025-09-09 10:05:23,740 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gpt-img.php "HTTP/1.1 200 OK"
+2025-09-09 11:38:54,783 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-09 11:42:18,496 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-09 11:42:31,146 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-09 11:42:41,719 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-09 11:43:26,362 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-09 11:54:42,310 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-img.php "HTTP/1.1 200 OK"
+2025-09-09 11:56:10,696 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/flux-pro.php "HTTP/1.1 200 OK"
+2025-09-09 11:56:39,616 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/img-cv.php "HTTP/1.1 200 OK"
+2025-09-09 11:58:22,849 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/create-music.php "HTTP/1.1 200 OK"
+2025-09-09 12:00:23,603 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-09 12:01:58,152 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-09 12:02:42,584 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-09 12:03:29,671 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-09 12:05:20,499 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-09 12:18:55,094 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-09 12:21:08,581 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
