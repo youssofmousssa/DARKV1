@@ -33,44 +33,7 @@ async def validate_api_key(api_key: str) -> bool:
     # You can add actual API key validation here if needed
     return True
 
-# Gemini Image Generation (REMOVED - Only editing endpoint available)
-# The external API only supports editing mode with text and optional link parameters
 
-# Gemini Image Generation
-@router.post("/gemini-img", response_model=ImageResponse, summary="Gemini Pro Image Generation")
-async def gemini_image_generate(request: SimpleImageRequest, req: Request):
-    """
-    Generate images using Gemini Pro
-    
-    - **text**: Image description prompt
-    - **api_key**: Your DarkAI API key (required)
-    """
-    await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/gemini-img.php"
-    
-    try:
-        async with httpx.AsyncClient(timeout=60.0) as client:
-            response = await client.post(base_url, data={"text": request.text})
-            response.raise_for_status()
-            
-            if response.headers.get("content-type", "").startswith("application/json"):
-                result = response.json()
-                return ImageResponse(
-                    date=result.get("date", ""),
-                    url=result.get("url", ""),
-                    dev=result.get("dev", "Don't forget to support the channel @DarkAIx")
-                )
-            else:
-                url = response.text.strip()
-                return ImageResponse(
-                    date=time.strftime("%d/%m/%Y"),
-                    url=url,
-                    dev="Don't forget to support the channel @DarkAIx"
-                )
-            
-    except Exception as e:
-        logger.error(f"Gemini image API error: {e}")
-        raise HTTPException(status_code=500, detail="Failed to generate image")
 
 # Gemini Image Editing
 @router.post("/gemini-img/edit", response_model=ImageResponse, summary="Gemini Pro Image Editing")
@@ -114,41 +77,6 @@ async def gemini_image_edit(request: ImageEditRequest, req: Request):
         logger.error(f"Gemini image API error: {e}")
         raise HTTPException(status_code=500, detail="Failed to process image")
 
-# GPT-5 Image Generation
-@router.post("/gpt-img", response_model=ImageResponse, summary="GPT-5 Image Generation")
-async def gpt_image_generate(request: SimpleImageRequest, req: Request):
-    """
-    Generate images using GPT-5
-    
-    - **text**: Image description prompt
-    - **api_key**: Your DarkAI API key (required)
-    """
-    await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/gpt-img.php"
-    
-    try:
-        async with httpx.AsyncClient(timeout=60.0) as client:
-            response = await client.post(base_url, data={"text": request.text})
-            response.raise_for_status()
-            
-            if response.headers.get("content-type", "").startswith("application/json"):
-                result = response.json()
-                return ImageResponse(
-                    date=result.get("date", ""),
-                    url=result.get("url", ""),
-                    dev=result.get("dev", "Don't forget to support the channel @DarkAIx")
-                )
-            else:
-                url = response.text.strip()
-                return ImageResponse(
-                    date=time.strftime("%d/%m/%Y"),
-                    url=url,
-                    dev="Don't forget to support the channel @DarkAIx"
-                )
-            
-    except Exception as e:
-        logger.error(f"GPT image API error: {e}")
-        raise HTTPException(status_code=500, detail="Failed to generate image")
 
 # GPT-5 Image Editing
 @router.post("/gpt-img/edit", response_model=ImageResponse, summary="GPT-5 Image Editing")
