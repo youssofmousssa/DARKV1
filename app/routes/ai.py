@@ -17,7 +17,7 @@ async def validate_api_key(api_key: str) -> bool:
     return True
 
 # AI Chat Models - Separate endpoints for each model
-@router.post("/ai/online", summary="Online AI Model")
+@router.post("/ai/online", summary="Online YAI Model")
 async def online_ai(request: SimpleTextRequest, req: Request):
     """
     Online AI model for text generation
@@ -42,7 +42,7 @@ async def online_ai(request: SimpleTextRequest, req: Request):
         logger.error(f"Online AI error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
-@router.post("/ai/standard", summary="Standard AI Model")
+@router.post("/ai/standard", summary="Standard YAI Model")
 async def standard_ai(request: SimpleTextRequest, req: Request):
     """
     Standard AI model for text generation
@@ -66,7 +66,7 @@ async def standard_ai(request: SimpleTextRequest, req: Request):
         logger.error(f"Standard AI error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
-@router.post("/ai/super-genius", summary="Super Genius AI Model")
+@router.post("/ai/super-genius", summary="Super Genius YAI Model")
 async def super_genius_ai(request: SimpleTextRequest, req: Request):
     """
     Super Genius AI model for advanced text generation
@@ -90,7 +90,7 @@ async def super_genius_ai(request: SimpleTextRequest, req: Request):
         logger.error(f"Super Genius AI error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
-@router.post("/ai/online-genius", summary="Online Genius AI Model")
+@router.post("/ai/online-genius", summary="Online Genius YAI Model")
 async def online_genius_ai(request: SimpleTextRequest, req: Request):
     """
     Online Genius AI model for text generation
@@ -115,7 +115,7 @@ async def online_genius_ai(request: SimpleTextRequest, req: Request):
         raise HTTPException(status_code=500, detail="Internal server error")
 
 # Gemini Models - Separate endpoints
-@router.post("/gemini/pro", summary="Gemini 2.5 Pro")
+@router.post("/gemini/pro", summary="YAI Gemini 2.5 Pro")
 async def gemini_pro(request: SimpleTextRequest, req: Request):
     """
     Gemini 2.5 Pro model
@@ -139,7 +139,7 @@ async def gemini_pro(request: SimpleTextRequest, req: Request):
         logger.error(f"Gemini Pro error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
-@router.post("/gemini/deep", summary="Gemini 2.5 Deep Search")
+@router.post("/gemini/deep", summary="YAI Gemini 2.5 Deep Search")
 async def gemini_deep(request: SimpleTextRequest, req: Request):
     """
     Gemini 2.5 Deep Search model
@@ -163,7 +163,7 @@ async def gemini_deep(request: SimpleTextRequest, req: Request):
         logger.error(f"Gemini Deep error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
-@router.post("/gemini/flash", summary="Gemini 2.5 Flash")
+@router.post("/gemini/flash", summary="YAI Gemini 2.5 Flash")
 async def gemini_flash(request: SimpleTextRequest, req: Request):
     """
     Gemini 2.5 Flash model
@@ -188,7 +188,7 @@ async def gemini_flash(request: SimpleTextRequest, req: Request):
         raise HTTPException(status_code=500, detail="Internal server error")
 
 # Gemma Models - Separate endpoints
-@router.post("/gemma/4b", summary="Gemma 4B Model")
+@router.post("/gemma/4b", summary="YAI Gemma 4B Model")
 async def gemma_4b(request: SimpleTextRequest, req: Request):
     """
     Gemma 4B model
@@ -212,7 +212,7 @@ async def gemma_4b(request: SimpleTextRequest, req: Request):
         logger.error(f"Gemma 4B error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
-@router.post("/gemma/12b", summary="Gemma 12B Model")
+@router.post("/gemma/12b", summary="YAI Gemma 12B Model")
 async def gemma_12b(request: SimpleTextRequest, req: Request):
     """
     Gemma 12B model
@@ -236,7 +236,7 @@ async def gemma_12b(request: SimpleTextRequest, req: Request):
         logger.error(f"Gemma 12B error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
-@router.post("/gemma/27b", summary="Gemma 27B Model")
+@router.post("/gemma/27b", summary="YAI Gemma 27B Model")
 async def gemma_27b(request: SimpleTextRequest, req: Request):
     """
     Gemma 27B model
@@ -261,7 +261,7 @@ async def gemma_27b(request: SimpleTextRequest, req: Request):
         raise HTTPException(status_code=500, detail="Internal server error")
 
 # WormGPT Model
-@router.post("/wormgpt", summary="WormGPT Model")
+@router.post("/wormgpt", summary="Worm YAI Model")
 async def wormgpt(request: SimpleTextRequest, req: Request):
     """
     WormGPT AI model
