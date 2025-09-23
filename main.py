@@ -74,7 +74,7 @@ app.include_router(background.router, prefix="/api", tags=["Background Removal"]
 @app.get("/", tags=["Health"])
 async def root():
     return {
-        "message": "DarkAI Pro Backend API",
+        "message": "DarkAI",
         "version": "2.0.0",
         "status": "active",
         "endpoints": {
