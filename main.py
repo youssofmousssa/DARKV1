@@ -33,7 +33,7 @@ async def lifespan(app: FastAPI):
         pass
 
 app = FastAPI(
-    title="DarkAI Pro Backend API",
+    title="DarkAI",
     description="Comprehensive AI API Backend with 18+ models and advanced security",
     version="2.0.0",
     docs_url="/docs",
