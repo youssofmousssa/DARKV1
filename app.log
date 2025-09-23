@@ -72,3 +72,26 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-09-09 12:05:20,499 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
 2025-09-09 12:18:55,094 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
 2025-09-09 12:21:08,581 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/music.php "HTTP/1.1 200 OK"
+2025-09-23 15:31:00,349 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-09-23 15:31:33,179 - darkai_api - INFO - Nano Banana generation request: {'text': 'Dog'}
+2025-09-23 15:31:43,892 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/nano-banana.php "HTTP/1.1 200 OK"
+2025-09-23 15:34:21,536 - darkai_api - INFO - Nano Banana generation request: {'text': 'hello'}
+2025-09-23 15:34:32,708 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/nano-banana.php "HTTP/1.1 200 OK"
+2025-09-23 15:36:51,230 - darkai_api - INFO - Nano Banana editing/merging request: {'text': 'hello', 'links': 'https://cdn.snapzion.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5199f7d4-8591-4bab-97c9-137e5a91f38f.png'}
+2025-09-23 15:37:21,864 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/nano-banana.php "HTTP/1.1 200 OK"
+2025-09-23 15:48:01,799 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/ai.php "HTTP/1.1 200 OK"
+2025-09-23 15:48:22,991 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/ai.php "HTTP/1.1 200 OK"
+2025-09-23 15:48:41,079 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/ai.php "HTTP/1.1 200 OK"
+2025-09-23 15:48:54,890 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/ai.php "HTTP/1.1 200 OK"
+2025-09-23 15:49:08,306 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemini-dark.php "HTTP/1.1 200 OK"
+2025-09-23 15:49:51,438 - darkai_api - ERROR - Gemini Deep error: 
+2025-09-23 15:49:56,080 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/DARK/gemini.php "HTTP/1.1 200 OK"
+2025-09-23 15:50:16,661 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemma.php "HTTP/1.1 200 OK"
+2025-09-23 15:50:31,958 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemma.php "HTTP/1.1 200 OK"
+2025-09-23 15:50:50,632 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/api/gemma.php "HTTP/1.1 200 OK"
+2025-09-23 15:51:12,129 - httpx - INFO - HTTP Request: POST https://sii3.moayman.top/DARK/api/wormgpt.php "HTTP/1.1 200 OK"

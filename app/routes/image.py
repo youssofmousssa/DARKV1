@@ -1,5 +1,5 @@
 # app/routes/image.py
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, HTTPException, Request, Query
 from pydantic import BaseModel
 import httpx
 import time
@@ -20,7 +20,7 @@ class SimpleImageRequest(BaseModel):
 
 class MultiImageRequest(BaseModel):
     text: str
-    links: str  # comma-separated URLs
+    links: Optional[str] = None  # comma-separated URLs, optional for generation mode
     api_key: str
 
 class ImageResponse(BaseModel):
@@ -181,38 +181,73 @@ async def img_cv_generate(request: SimpleImageRequest, req: Request):
         raise HTTPException(status_code=500, detail="Failed to generate img-cv image")
 
 
-@router.post("/nano-banana", response_model=ImageResponse, summary="Nano Banana - Merge Multiple Images")
-async def nano_banana_merge(request: MultiImageRequest, req: Request):
+async def _nano_banana_core_logic(text: str, links: Optional[str], api_key: str) -> ImageResponse:
     """
-    Merge multiple images using Nano Banana (up to 10 images).
+    Core logic for Nano Banana API - Generate or edit images.
+    
+    For image generation (text-to-image):
+    - text: prompt for image generation (e.g., "Billie Eilish with Ronaldo")
+    - links: omit or leave empty
+    
+    For image editing/merging:
+    - text: editing instructions (e.g., "Merge the photos naturally")
     - links: comma-separated image URLs (max 10)
     """
-    await validate_api_key(request.api_key)
-
-    # Sanitize and split the input string
-    links_list = [l.strip() for l in request.links.split(",") if l.strip()]
-    
-    if not links_list:
-        raise HTTPException(status_code=400, detail="At least one link is required")
-    if len(links_list) > 10:
-        raise HTTPException(status_code=400, detail="A maximum of 10 images is supported")
+    await validate_api_key(api_key)
 
     base_url = "https://sii3.moayman.top/api/nano-banana.php"
+    data = {"text": text}
+
+    # Check if this is editing mode (links provided) or generation mode (text only)
+    if links and links.strip():
+        # Image editing/merging mode
+        links_list = [l.strip() for l in links.split(",") if l.strip()]
+        
+        if not links_list:
+            raise HTTPException(status_code=400, detail="At least one link is required for editing mode")
+        if len(links_list) > 10:
+            raise HTTPException(status_code=400, detail="A maximum of 10 images is supported")
+        
+        data["links"] = ",".join(links_list)
+        operation_type = "editing/merging"
+    else:
+        # Image generation mode (text only)
+        operation_type = "generation"
 
     try:
         async with httpx.AsyncClient(timeout=120.0) as client:
-            data = {
-                "text": request.text,
-                "links": ",".join(links_list)  # Send as comma-separated string
-            }
+            logger.info(f"Nano Banana {operation_type} request: {data}")
             return await _post_and_parse(client, base_url, data, timeout=120.0)
 
     except httpx.TimeoutException as te:
-        logger.error(f"Nano Banana timeout: {te}")
+        logger.error(f"Nano Banana {operation_type} timeout: {te}")
         raise HTTPException(status_code=504, detail="Nano Banana API timed out")
     except httpx.HTTPStatusError as he:
-        logger.error(f"Nano Banana HTTP error: {he}")
+        logger.error(f"Nano Banana {operation_type} HTTP error: {he}")
         raise HTTPException(status_code=502, detail="Nano Banana upstream error")
     except Exception as e:
-        logger.error(f"Nano Banana unexpected error: {e}")
-        raise HTTPException(status_code=500, detail="Failed to merge images")
+        logger.error(f"Nano Banana {operation_type} unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to process Nano Banana {operation_type} request")
+
+
+@router.post("/nano-banana", response_model=ImageResponse, summary="Nano Banana - Generate or Edit Images (POST)")
+async def nano_banana_post(request: MultiImageRequest, req: Request):
+    """
+    POST endpoint for Nano Banana - Generate or edit images.
+    Accepts JSON body with text, optional links, and api_key.
+    """
+    return await _nano_banana_core_logic(request.text, request.links, request.api_key)
+
+
+@router.get("/nano-banana", response_model=ImageResponse, summary="Nano Banana - Generate or Edit Images (GET)")
+async def nano_banana_get(
+    text: str = Query(..., description="Text prompt for generation or editing instructions"),
+    links: Optional[str] = Query(None, description="Comma-separated image URLs (max 10, optional for generation)"),
+    api_key: str = Query(..., description="API key for authentication"),
+    req: Request = None
+):
+    """
+    GET endpoint for Nano Banana - Generate or edit images.
+    Accepts query parameters: text, links (optional), and api_key.
+    """
+    return await _nano_banana_core_logic(text, links, api_key)
