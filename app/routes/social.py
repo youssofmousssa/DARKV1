@@ -40,7 +40,7 @@ async def download_social_content(request: SocialDownloadRequest, req: Request):
     if not request.url.startswith(("http://", "https://")):
         raise HTTPException(status_code=400, detail="Invalid URL format - must start with http:// or https://")
     
-    base_url = "https://sii3.moayman.top/api/do.php"
+    base_url = "https://sii3.top/api/do.php"
     
     try:
         async with httpx.AsyncClient(timeout=60.0) as client:
