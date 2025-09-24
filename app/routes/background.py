@@ -34,7 +34,7 @@ async def remove_background(request: BackgroundRemovalRequest, req: Request):
     if not request.url.startswith(("http://", "https://")):
         raise HTTPException(status_code=400, detail="Invalid image URL format - must start with http:// or https://")
     
-    base_url = "https://sii3.moayman.top/api/remove-bg.php"
+    base_url = "https://sii3.top/api/remove-bg.php"
     
     try:
         async with httpx.AsyncClient(timeout=60.0) as client:
