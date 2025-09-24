@@ -72,7 +72,7 @@ async def voice_custom(request: VoiceWithStyleRequest, req: Request):
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/voice.php"
+    base_url = "https://sii3.top/api/voice.php"
     
     # Validate voice options if provided
     if request.voice:
