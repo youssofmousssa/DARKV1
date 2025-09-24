@@ -28,7 +28,7 @@ async def validate_api_key(api_key: str) -> bool:
 async def create_music_with_lyrics(request: MusicWithLyricsRequest, req: Request):
     await validate_api_key(request.api_key)
 
-    base_url = "https://sii3.moayman.top/api/music.php"
+    base_url = "https://sii3.top/api/music.php"
 
     # Build the POST form data correctly
     form_data = {
@@ -60,7 +60,7 @@ async def create_music_with_lyrics(request: MusicWithLyricsRequest, req: Request
 async def create_instrumental_music(request: SimpleTextRequest, req: Request):
     await validate_api_key(request.api_key)
 
-    base_url = "https://sii3.moayman.top/api/create-music.php"
+    base_url = "https://sii3.top/api/create-music.php"
 
     try:
         async with httpx.AsyncClient(timeout=120.0) as client:
