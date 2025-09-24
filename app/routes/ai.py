@@ -26,7 +26,7 @@ async def online_ai(request: SimpleTextRequest, req: Request):
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/ai.php"
+    base_url = "https://sii3.top/api/ai.php"
     
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
@@ -75,7 +75,7 @@ async def super_genius_ai(request: SimpleTextRequest, req: Request):
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/ai.php"
+    base_url = "https://sii3.top/api/ai.php"
     
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
@@ -99,7 +99,7 @@ async def online_genius_ai(request: SimpleTextRequest, req: Request):
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/ai.php"
+    base_url = "https://sii3.top/api/ai.php"
     
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
@@ -124,7 +124,7 @@ async def gemini_pro(request: SimpleTextRequest, req: Request):
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/gemini-dark.php"
+    base_url = "https://sii3.top/api/gemini-dark.php"
     
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
@@ -148,7 +148,7 @@ async def gemini_deep(request: SimpleTextRequest, req: Request):
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/gemini-dark.php"
+    base_url = "https://sii3.top/api/gemini-dark.php"
     
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
@@ -172,7 +172,7 @@ async def gemini_flash(request: SimpleTextRequest, req: Request):
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/DARK/gemini.php"
+    base_url = "https://sii3.top/DARK/gemini.php"
     
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
@@ -197,7 +197,7 @@ async def gemma_4b(request: SimpleTextRequest, req: Request):
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/gemma.php"
+    base_url = "https://sii3.top/api/gemma.php"
     
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
@@ -221,7 +221,7 @@ async def gemma_12b(request: SimpleTextRequest, req: Request):
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/gemma.php"
+    base_url = "https://sii3.top/api/gemma.php"
     
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
@@ -245,7 +245,7 @@ async def gemma_27b(request: SimpleTextRequest, req: Request):
     - **api_key**: Your DarkAI API key (required)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/gemma.php"
+    base_url = "https://sii3.top/api/gemma.php"
     
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
@@ -273,7 +273,7 @@ async def wormgpt(request: SimpleTextRequest, req: Request):
     The user is solely responsible for how they choose to use it.
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/DARK/api/wormgpt.php"
+    base_url = "https://sii3.top/DARK/api/wormgpt.php"
     
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
