@@ -80,7 +80,7 @@ async def gemini_image_edit(request: ImageEditRequest, req: Request):
     - api_key: required (validated locally)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/gemini-img.php"
+    base_url = "https://sii3.top/api/gemini-img.php"
 
     data = {"text": request.text}
     if request.link:
@@ -111,7 +111,7 @@ async def gpt_image_edit(request: ImageEditRequest, req: Request):
     - api_key: required (validated locally)
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/gpt-img.php"
+    base_url = "https://sii3.top/api/gpt-img.php"
 
     data = {"text": request.text}
     if request.link:
@@ -139,7 +139,7 @@ async def flux_pro_generate(request: SimpleImageRequest, req: Request):
     Note: This endpoint returns the raw upstream response (JSON or text).
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/flux-pro.php"
+    base_url = "https://sii3.top/api/flux-pro.php"
     try:
         async with httpx.AsyncClient(timeout=90.0) as client:
             resp = await client.post(base_url, data={"text": request.text})
@@ -166,7 +166,7 @@ async def img_cv_generate(request: SimpleImageRequest, req: Request):
     High quality image generation using img-cv API.
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/img-cv.php"
+    base_url = "https://sii3.top/api/img-cv.php"
     try:
         async with httpx.AsyncClient(timeout=60.0) as client:
             return await _post_and_parse(client, base_url, {"text": request.text}, timeout=60.0)
@@ -195,7 +195,7 @@ async def _nano_banana_core_logic(text: str, links: Optional[str], api_key: str)
     """
     await validate_api_key(api_key)
 
-    base_url = "https://sii3.moayman.top/api/nano-banana.php"
+    base_url = "https://sii3.top/api/nano-banana.php"
     data = {"text": text}
 
     # Check if this is editing mode (links provided) or generation mode (text only)
