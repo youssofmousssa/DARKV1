@@ -70,7 +70,7 @@ async def image_to_video(request: ImageToVideoRequest, req: Request):
     - Fast processing
     """
     await validate_api_key(request.api_key)
-    base_url = "https://sii3.moayman.top/api/veo3.php"
+    base_url = "https://sii3.top/api/veo3.php"
     
     try:
         async with httpx.AsyncClient(timeout=180.0) as client:
